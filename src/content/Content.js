@@ -8,10 +8,11 @@ import Testimonials from './home/Testimonials.js';
 import Products from './home/Products.js';
 import Close from './home/Close.js';
 
-import Intro from './about/Intro.js';
-import Mission from './about/Mission.js';
-import Vision from './about/Vision.js';
-import Values from './about/Values.js';
+import About from './About.js';
+
+import Contact from './contact/Contact.js';
+import Details from './contact/Details.js';
+import Map from './contact/Map.js';
 
 const Content = React.createClass({
 	getDefaultProps: function() {
@@ -37,22 +38,35 @@ const Content = React.createClass({
 	renderHome: function() {
 		return (
 			<div id="home_page">
-				<Gallery />
-				<Catch />
-				<Clients />
-				<Testimonials />
-				<Products products={this.props.contents.products} />
-				<Close />
+					<Gallery
+						images={this.props.contents.galleryImages}
+						descriptions={this.props.contents.galleryDescriptions}
+						currIndex={this.props.contents.galleryIndex}
+						changeIndex={this.props.contents.changeGalleryIndex}
+					/>
+					<Catch />
+					<Clients
+						images={this.props.contents.clientImages}
+						descriptions={this.props.contents.clientDescriptions}
+						currIndex={this.props.contents.clientIndex}
+						changeIndex={this.props.contents.changeClientIndex}
+					/>
+					<Testimonials
+						images={this.props.contents.testimonialImages}
+						descriptions={this.props.contents.testimonialDescriptions}
+						currIndex={this.props.contents.testimonialIndex}
+						changeIndex={this.props.contents.changeTestimonialIndex}
+					/>
+					<Products products={this.props.contents.products} />
+					<Close />
 			</div>
 		);
 	},
 	renderAbout: function() {
+		console.log(this.props)
 		return (
 			<div id="about_page">
-				<Intro />
-				<Mission />
-				<Vision />
-				<Values />
+				<About about={this.props.contents.about}/>
 			</div>
 		);
 	},
@@ -64,9 +78,24 @@ const Content = React.createClass({
 		);
 	},
 	renderContact: function() {
+		console.log(this.props.contents)
 		return (
 			<div id="contact_page">
-				placeholder for contact
+				<Contact
+					enquireName={this.props.contents.enquireName}
+					changeEnquireName={this.props.contents.changeEnquireName}
+					enquireEmail={this.props.contents.enquireEmail}
+					changeEnquireEmail={this.props.contents.changeEnquireEmail}
+					enquireMessage={this.props.contents.enquireMessage}
+					changeEnquireMessage={this.props.contents.changeEnquireMessage}
+				/>
+				<Details
+					address={this.props.contents.company.address}
+					email={this.props.contents.company.email}
+					phone={this.props.contents.company.phone}
+					phonealt={this.props.contents.company.phonealt}
+				/>
+				<Map />
 			</div>
 		);
 	},

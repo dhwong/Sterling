@@ -12,7 +12,7 @@ const Products = React.createClass({
 								src={product.src}
 								label={product.label}
 								description={product.description}
-								isShort={this.props.contentPage!=="Home"}
+								isShort={this.props.contentPage==="Home"}
 							/>;
 		}.bind(this));
 	},
@@ -32,8 +32,9 @@ const Products = React.createClass({
 
 const ProductItem = React.createClass({
 	getDescription: function() {
-		if(this.props.description.length > 300 && this.props.isShort)
-			return this.props.description.substring(0, 297) + "..."
+		// if(this.props.description.length > 250 && this.props.isShort) {
+		// 	return this.props.description.substring(0, 247) + "..."
+		// }
 		return this.props.description
 	},
 	render: function() {

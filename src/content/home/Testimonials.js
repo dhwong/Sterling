@@ -13,7 +13,12 @@ const Testimonials = React.createClass({
 					<i className="fa fa-comments" aria-hidden="true"></i>
 					<div className="rightDivider"></div></div>
 				<div className="contentBody">
-					<Gallery />
+					<Gallery
+						images={this.props.images}
+						descriptions={this.props.descriptions}
+						currIndex={this.props.currIndex}
+						changeIndex={this.props.changeIndex}
+					/>
 				</div>
 			</div>
 		)
